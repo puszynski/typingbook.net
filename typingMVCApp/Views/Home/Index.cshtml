@@ -3,29 +3,40 @@
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>press SPACE</h1>
+    <p class="lead">To start typing a introduction to the app!</p>
+    <p><a href="@Url.Action("Index", "Typing")" class="btn btn-primary btn-lg">Start/Continue &raquo;</a></p>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
+    <div class="col-md-6">
+        <h2>Chose a book!</h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            Press <b>Shift</b> key to choose a book.
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p><a class="btn btn-default" href="@Url.Action("ChoseBook", "Typing")">Chose/Change a book &raquo;</a></p>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="col-md-6">
+        <h2>Settings</h2>
+        <p>Press <b>Esc</b> key to go to the app settings.</p>
+        <p><a class="btn btn-default" href="@Url.Action("Settings", "Home")">Settings &raquo;</a></p>
     </div>
 </div>
+
+
+<script type="text/javascript">
+    document.onkeydown = function (event) {
+
+        if (event.keyCode === 32) {
+            window.location.href = '@Url.Action("Index", "Typing")';
+        }
+        if (event.keyCode === 16) {
+            window.location.href = '@Url.Action("ChoseBook", "Home")'; // name?
+        }
+        if (event.keyCode === 27) {
+            window.location.href = '@Url.Action("Settings", "Home")'; // ?
+        }
+
+        //ToDo - ukryty tekst dla niewidomych który mówi aby nacisnąć 'B' aby przejść do trybu dla niewidomych + event
+    };
+</script>

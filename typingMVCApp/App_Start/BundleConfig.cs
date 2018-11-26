@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace typingMVCApp
+namespace TypingMVCApp
 {
     public class BundleConfig
     {
