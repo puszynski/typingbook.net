@@ -1,25 +1,25 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-    background-color: dimgrey;
+    background-color: dimgray;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+h1 {
+    text-align: justify;
+    text-justify: inter-word;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+.menu {
+    text-align: right;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+/* apply when window width is less then.. */
+@media only screen and (max-width: 800px) {
+    .menu {
+        display: none;
+    }
+}
+/* apply when browser screen is bigger than.. */
+@media only screen and (min-width: 800px) {
+    .typingarea {
+        padding-top: 50px;
+    }
 }
