@@ -14,12 +14,12 @@ namespace TypingMVCApp.Controllers
         public ActionResult Index(int bookID = 1, int bookPage = 1)
         {
             var book = db.Books.Find(bookID);
-            //var authors = db.Authors.Find(); ??
+            var authors = "Test Author1" + ", " + "Test Author2";
             var typingHelper = new TypingHelper();
 
             var result = new TypingViewModel()
             {
-                BookAuthors = new List<string> { "ToDO1", "ToDO2" },
+                BookAuthors = authors,
                 CurrentBookPage = bookPage,
                 BookPages = typingHelper.DivideBook(book.BookContent),
                 BookTitle = book.BookTitle,

@@ -11,14 +11,65 @@ h1 {
     text-align: right;
 }
 
+
+.blink_text {
+    animation: 1s blinker linear infinite;
+    -webkit-animation: 1s blinker linear infinite;
+    -moz-animation: 1s blinker linear infinite;
+    color: black;
+}
+@-moz-keyframes blinker {
+    0% {
+        opacity: 1.0;
+    }
+
+    50% {
+        opacity: 0.0;
+    }
+
+    100% {
+        opacity: 1.0;
+    }
+}
+@-webkit-keyframes blinker {
+    0% {
+        opacity: 1.0;
+    }
+
+    50% {
+        opacity: 0.0;
+    }
+
+    100% {
+        opacity: 1.0;
+    }
+}
+@keyframes blinker {
+    0% {
+        opacity: 1.0;
+    }
+
+    50% {
+        opacity: 0.0;
+    }
+
+    100% {
+        opacity: 1.0;
+    }
+}
+
+
+
+
 /* apply when window width is less then.. */
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 500px) {
     .menu {
         display: none;
     }
 }
+
 /* apply when browser screen is bigger than.. */
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 500px) {
     .typingarea {
         padding-top: 50px;
     }

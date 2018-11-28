@@ -9,12 +9,23 @@
 </head>
 <body>
     <div class="container-fluid menu">
-        <button a href="#" type="button" class="btn btn-outline-dark border-top-0 rounded-0">typingBook.net</button>
-        <button a href="#" type="button" class="btn btn-outline-dark border-top-0 rounded-0">Type!</button>
-        <button a href="#" type="button" class="btn btn-outline-dark border-top-0 rounded-0">choseBook</button>
+
+        @*Progres bar - move to partial?*@ 
+        <div class="progress bg-dark" style="height:1px">
+            <div class="progress-bar bg-light" style="width:12%">
+            </div>
+            <div class="progress-bar bg-danger" style="width:3%">
+            </div>
+        </div>
+
+        @*Menu*@
+        @Html.ActionLink("typingBook.net", "Index", "Home", new { area = "" }, new { @class = "btn btn-outline-dark border-top-0 rounded-0" })
+        @Html.ActionLink("change book", "Index", "Books", new { area = "" }, new { @class = "btn btn-outline-dark border-top-0 rounded-0" })
         <button a href="#" type="button" class="btn btn-outline-dark border-top-0 rounded-0">settings</button>
         <button a href="#" type="button" class="btn btn-outline-dark border-top-0 rounded-0" data-toggle="collapse" data-target="#logindiv">LogIN</button>
 
+
+        @*TODO - move to partial*@
         <div id="logindiv" class="collapse container">
             <form action="/action_page.php">
                 <div class="form-group">
@@ -29,10 +40,6 @@
             </form>
         </div>
     </div>
-    @Html.ActionLink("typingBook.net", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-    @Html.ActionLink("Home", "Index", "Home")
-    @Html.ActionLink("About", "About", "Home")
-    @Html.ActionLink("Contact", "Contact", "Home")
 
     <div class="container typingarea">
         @RenderBody()
