@@ -12,8 +12,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>typingMVCApp</RootNamespace>
-    <AssemblyName>typingMVCApp</AssemblyName>
+    <RootNamespace>TypingMVCApp</RootNamespace>
+    <AssemblyName>TypingMVCApp</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -139,16 +139,19 @@
     <Compile Include="DAL\DBInitializer.cs" />
     <Compile Include="DAL\EntityFrameworkDBContext.cs" />
     <Compile Include="DomainModels\Author.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="DomainModels\Book.cs" />
+    <Compile Include="Helper\TypingHelper.cs" />
     <Compile Include="Migrations\201811261731243_Vol1.cs" />
     <Compile Include="Migrations\201811261731243_Vol1.Designer.cs">
       <DependentUpon>201811261731243_Vol1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\TypingViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />

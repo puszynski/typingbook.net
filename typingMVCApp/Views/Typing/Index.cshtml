@@ -1,7 +1,63 @@
-﻿@{
+﻿@model TypingMVCApp.ViewModels.TypingViewModel
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h1 class="aftertype" id="typed_content"></h1>
+<h1 class="beforetype" id="book_content">@Model.BookPages[0]</h1>
+<h1>@Model.CurrentBookPage</h1>
 
-<p>Gratki :)</p>
+<small>
+    <b>
+        @Model.BookTitle
+    </b> by
+    @foreach (var item in Model.BookAuthors)
+    {
+        @item
+    }
+</small>
 
+<div class="alert alert-primary">
+    keycode: "<span id="kc"></span>"<br />
+    first char: "<span id="fc"></span>"
+</div>
+
+<script type="text/javascript">
+    document.onkeypress = function (e) {
+        e = e || window.event;
+
+        var book_content = document.getElementById('book_content').textContent;
+        //book_content = $('#book_content').textContent;
+
+        document.getElementById('kc').innerHTML = String.fromCharCode(e.keyCode);
+        document.getElementById('fc').innerHTML = book_content.charAt(0);
+
+
+        if (String.fromCharCode(e.which /*|| e.keyCode*/) === book_content.charAt(0)) {
+
+            document.getElementById('typed_content').innerHTML += book_content.charAt(0);
+            document.getElementById('book_content').innerHTML = book_content.substr(1);
+
+            if (document.getElementById('book_content').innerHTML === '') {
+                //link wyonuje sie odrazu
+                window.location.href = "?bookID=1&bookPage=2";
+                //todo po protu zaladuj tresc kolejnego page    
+                //document.getElementById('book_content').innerHTML = "@Model.BookPages[1]"
+            }
+        }
+    };
+
+    //document.onkeypress = function (evt) { // wzór
+    //    evt = evt || window.event;
+    //    var charCode = evt.which || evt.keyCode;
+    //    var charTyped = String.fromCharCode(charCode);
+    //    alert("Character typed: " + charTyped);
+    //};
+</script>
+
+
+
+
+
+// ToCheck: https://www.youtube.com/watch?v=_Szdctv38Ow
