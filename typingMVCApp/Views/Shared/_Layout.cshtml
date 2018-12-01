@@ -6,37 +6,47 @@
     <title>typingbook.net</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/custom")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("typingBook.net", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div class="container-fluid menu">
+
+        @*Progres bar - move to partial?*@
+        <div class="progress bg-dark" style="height:1px">
+            <div class="progress-bar bg-light" style="width:12%">
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+            <div class="progress-bar bg-danger" style="width:3%">
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - typingBook Application</p>
-        </footer>
+
+        @*Menu*@
+        @Html.ActionLink("typingBook.net", "Index", "Home", new { area = "" }, new { @class = "btn btn-outline-dark border-top-0 rounded-0" })
+        @Html.ActionLink("change book", "Index", "Books", new { area = "" }, new { @class = "btn btn-outline-dark border-top-0 rounded-0" })
+        <button a href="#" type="button" class="btn btn-outline-dark border-top-0 rounded-0">settings</button>
+        <button a href="#" type="button" class="btn btn-outline-dark border-top-0 rounded-0">tips</button>
+        <button a href="#" type="button" class="btn btn-outline-light border-top-0 rounded-0" data-toggle="collapse" data-target="#logindiv">LogIN</button>
+
+
+        @*TODO - move to partial*@
+        <div id="logindiv" class="collapse container">
+            <form action="/action_page.php">
+                <div class="form-group">
+                    <label for="usr">Name:</label>
+                    <input type="text" class="form-control" id="usr" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd" name="password">
+                </div>
+                <button type="submit" class="btn btn-outline-dark rounded-0">Submit</button>
+            </form>
+        </div>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    <div class="container typingarea">
+        @RenderBody()
+    </div>   
+    
     @RenderSection("scripts", required: false)
 </body>
 </html>
