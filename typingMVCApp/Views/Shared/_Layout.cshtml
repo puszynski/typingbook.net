@@ -10,7 +10,7 @@
 <body>
     <div class="container-fluid menu">
 
-        @*Progres bar - move to partial?*@ 
+        @*Progres bar - move to partial?*@
         <div class="progress bg-dark" style="height:1px">
             <div class="progress-bar bg-light" style="width:12%">
             </div>
@@ -22,7 +22,8 @@
         @Html.ActionLink("typingBook.net", "Index", "Home", new { area = "" }, new { @class = "btn btn-outline-dark border-top-0 rounded-0" })
         @Html.ActionLink("change book", "Index", "Books", new { area = "" }, new { @class = "btn btn-outline-dark border-top-0 rounded-0" })
         <button a href="#" type="button" class="btn btn-outline-dark border-top-0 rounded-0">settings</button>
-        <button a href="#" type="button" class="btn btn-outline-dark border-top-0 rounded-0" data-toggle="collapse" data-target="#logindiv">LogIN</button>
+        <button a href="#" type="button" class="btn btn-outline-dark border-top-0 rounded-0">tips</button>
+        <button a href="#" type="button" class="btn btn-outline-light border-top-0 rounded-0" data-toggle="collapse" data-target="#logindiv">LogIN</button>
 
 
         @*TODO - move to partial*@
@@ -46,6 +47,7 @@
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/custom")
     @RenderSection("scripts", required: false)
 </body>
 </html>

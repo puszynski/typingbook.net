@@ -2,26 +2,29 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+<div class="jumbotron bg-secondary">
     <h1>press SPACE</h1>
-    <p class="lead">To start typing a introduction to the app!</p>
-    <p><a href="@Url.Action("Index", "Typing")" class="btn btn-primary btn-lg">Start/Continue &raquo;</a></p>
+    <p class="lead ">To start typing a introduction about the typingBook.net</p>
+    <p><a href="@Url.Action("Index", "Typing")" class="btn btn-primary btn-lg">Start/Continue</a></p>
 </div>
 
-<div class="row">
-    <div class="col-md-6">
+
+
+    <div class="col-md-4 bg-secondary">
         <h2>Chose a book!</h2>
         <p>
             Press <b>Shift</b> key to choose a book.
         </p>
         <p><a class="btn btn-default" href="@Url.Action("ChoseBook", "Typing")">Chose/Change a book &raquo;</a></p>
     </div>
-    <div class="col-md-6">
+
+    <div class="col-md-4 bg-secondary">
         <h2>Settings</h2>
         <p>Press <b>Esc</b> key to go to the app settings.</p>
         <p><a class="btn btn-default" href="@Url.Action("Settings", "Home")">Settings &raquo;</a></p>
     </div>
-</div>
+
+
 
 
 <script type="text/javascript">

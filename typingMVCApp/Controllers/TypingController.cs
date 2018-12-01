@@ -11,7 +11,7 @@ namespace TypingMVCApp.Controllers
         private EntityFrameworkDBContext db = new EntityFrameworkDBContext();
 
         // GET: Typing
-        public ActionResult Index(int bookID = 1, int bookPage = 1)
+        public ActionResult Index(int bookID = 1, int bookPage = 0)
         {
             var book = db.Books.Find(bookID);
             var authors = "Test Author1" + ", " + "Test Author2";
