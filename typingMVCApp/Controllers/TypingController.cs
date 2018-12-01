@@ -12,12 +12,15 @@ namespace TypingMVCApp.Controllers
 
         // GET: Typing
         public ActionResult Index(int bookID = 1, int bookPage = 0)
-        {
+         {
             var book = db.Books.Find(bookID);
             var authors = "Test Author1" + ", " + "Test Author2";
             var typingHelper = new TypingHelper();
 
-            var result = new TypingViewModel()
+            if (bookID == 1)
+                ViewBag.IsIntroduction = true;
+
+            var model = new TypingViewModel()
             {
                 BookAuthors = authors,
                 CurrentBookPage = bookPage,
@@ -25,8 +28,7 @@ namespace TypingMVCApp.Controllers
                 BookTitle = book.BookTitle,
                 BookID = bookID
             };
-
-            return View(result);
+            return View(model);
         }
     }
 }

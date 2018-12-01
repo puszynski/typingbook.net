@@ -11,7 +11,7 @@ namespace TypingMVCApp
             bundles.Add(new ScriptBundle("~/bundles/custom").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/bootstrap.js",
-                         "~/Scripts/TypingScript.js"
+                        "~/Scripts/TypingScript.js"
                          ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
