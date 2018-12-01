@@ -58,7 +58,9 @@ h1 {
     }
 }
 
-
+.red{
+    color: red;
+}
 
 
 /* apply when window width is less then.. */
