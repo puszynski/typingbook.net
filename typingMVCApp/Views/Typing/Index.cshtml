@@ -12,56 +12,9 @@
     <br />@Model.BookTitle.ToUpper() by @Model.BookAuthors
 </h6>
 
-<p class="stats">Hi</p>
-
-
+<p class="stats">Dynaymic stats will came here</p>
 
 
 <script type="text/javascript">
-    // Global variables
-    var currentBookPage = 0;
-    var statsTypedCorrect = 0;
-    var statsTypedWrong = 0;
-
-    // NIE DZIAŁA
-    //$(document).ready(function () {
-    //    $("#stats").text("Hello world!");
-    //});
-
-    //$(document).ready(function () {
-    //    alert("works!");
-    //});
-
-
-
-    // Typing
-    document.onkeypress = function (e) {
-        e = e || window.event;
-
-        var book_content = document.getElementById('book_content').textContent;
-
-        if (String.fromCharCode(e.which /*|| e.keyCode*/) === book_content.charAt(0)) {
-            document.body.style.backgroundColor = "dimgray";
-
-            document.getElementById('typed_content').innerHTML += book_content.charAt(0);
-            document.getElementById('book_content').innerHTML = book_content.substr(1);
-
-            if (document.getElementById('book_content').innerHTML === '') {
-                window.location.href = "?bookID=1&bookPage=@(++Model.CurrentBookPage)";
-            }
-        }
-        else {
-            //var actualColor = document.body.style.backgroundColor;
-            document.body.style.backgroundColor = "white";
-        }
-    };
-
+    this.typingBook(@Model.CurrentBookPage)
 </script>
-
-
-
-
-
-
-
-
