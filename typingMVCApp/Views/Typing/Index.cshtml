@@ -1,8 +1,8 @@
 ﻿@model TypingMVCApp.ViewModels.TypingViewModel
-@*@Scripts.Render("~/Scripts/yourScript.js")*@    @*miejsce gdzie mozesz zamiescic konkretny boundle*@
-
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var bookPages = @Html.Raw(Json.Encode(Model.BookPages));
+    var isIntroduction = @ViewBag.IsIntroduction == true ? 1 : 0;
 }
 
 <h1>
@@ -15,6 +15,8 @@
 <p class="stats">Dynaymic stats will came here</p>
 
 
+
+
 <script type="text/javascript">
-    this.typingBook(@Model.CurrentBookPage)
+    typingBook(@Model.CurrentBookPage, @bookPages, @isIntroduction);
 </script>
