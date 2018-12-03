@@ -46,7 +46,12 @@ function typingBook(currentBookPage, bookPagesJson, isIntroduction) {
             //when book pages end
             if (document.getElementById('book_content').innerHTML === '') {
                 var bookPages = bookPagesJson;
-                var nextPage = ++currentBookPage;    
+                var nextPage = ++currentBookPage;  
+
+                $('.progress-bar-correct').css({ 'width': '0%' });
+                $('.progress-bar-wrong').css({ 'width': '0%' });
+                $('.correctTyped').html('0');
+                $('.wrongTyped').html('0');
 
                 if (bookPages.length <= nextPage) {
                     if (isIntroduction === 1) { 

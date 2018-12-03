@@ -11,7 +11,7 @@ using TypingMVCApp.DomainModels;
 
 namespace TypingMVCApp.Controllers
 {
-    public class AuthorsController : Controller
+    public class AuthorsController : BaseController
     {
         private EntityFrameworkDBContext db = new EntityFrameworkDBContext();
 

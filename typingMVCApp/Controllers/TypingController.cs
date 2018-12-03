@@ -6,7 +6,7 @@ using TypingMVCApp.ViewModels;
 
 namespace TypingMVCApp.Controllers
 {
-    public class TypingController : Controller
+    public class TypingController : BaseController
     {
         private EntityFrameworkDBContext db = new EntityFrameworkDBContext();
 
