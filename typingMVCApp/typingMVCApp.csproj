@@ -135,6 +135,7 @@
     <Compile Include="DAL\EntityFrameworkDBContext.cs" />
     <Compile Include="DomainModels\Author.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Filters\LogAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

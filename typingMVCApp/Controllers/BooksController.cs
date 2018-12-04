@@ -37,6 +37,7 @@ namespace TypingMVCApp.Controllers
         }
 
         // GET: Books/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -60,6 +61,7 @@ namespace TypingMVCApp.Controllers
         }
 
         // GET: Books/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -91,6 +93,7 @@ namespace TypingMVCApp.Controllers
         }
 
         // GET: Books/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -108,6 +111,7 @@ namespace TypingMVCApp.Controllers
         // POST: Books/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             Book book = db.Books.Find(id);
