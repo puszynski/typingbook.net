@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using TypingMVCApp.DAL;
 using TypingMVCApp.DomainModels;
 
 namespace TypingMVCApp.Controllers
 {
-    public class AuthorsController : Controller
+    public class AuthorsController : BaseController
     {
         private EntityFrameworkDBContext db = new EntityFrameworkDBContext();
 
@@ -60,6 +56,7 @@ namespace TypingMVCApp.Controllers
         }
 
         // GET: Authors/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,6 +76,7 @@ namespace TypingMVCApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "ID,FirstName,LastName")] Author author)
         {
             if (ModelState.IsValid)
@@ -91,6 +89,7 @@ namespace TypingMVCApp.Controllers
         }
 
         // GET: Authors/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -108,6 +107,7 @@ namespace TypingMVCApp.Controllers
         // POST: Authors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             Author author = db.Authors.Find(id);

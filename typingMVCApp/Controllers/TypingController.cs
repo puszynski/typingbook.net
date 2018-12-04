@@ -1,16 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using TypingMVCApp.DAL;
+using TypingMVCApp.Filters;
 using TypingMVCApp.Helper;
 using TypingMVCApp.ViewModels;
 
 namespace TypingMVCApp.Controllers
 {
-    public class TypingController : Controller
+    public class TypingController : BaseController
     {
         private EntityFrameworkDBContext db = new EntityFrameworkDBContext();
 
         // GET: Typing
+        [Log]
         public ActionResult Index(int bookID = 1, int bookPage = 0)
          {
             var book = db.Books.Find(bookID);
