@@ -31,7 +31,7 @@ namespace TypingMVCCore.Controllers
             }
 
             var book = await _context.Book
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(x => x.ID == id);
             if (book == null)
             {
                 return NotFound();

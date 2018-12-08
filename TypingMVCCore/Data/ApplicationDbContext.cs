@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TypingMVCCore.DomainModels;
 
@@ -13,6 +10,7 @@ namespace TypingMVCCore.Data
             : base(options)
         {
         }
-        public DbSet<TypingMVCCore.DomainModels.Book> Book { get; set; }
+        public DbSet<Book> Book { get; set; }
+        public DbSet<Author> Author { get; set; }
     }
 }
