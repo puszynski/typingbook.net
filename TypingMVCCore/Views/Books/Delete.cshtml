@@ -1,0 +1,39 @@
+﻿@model TypingMVCCore.DomainModels.Book
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Book</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BookTitle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BookTitle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BookContent)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BookContent)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rate)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
