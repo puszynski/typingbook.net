@@ -11,6 +11,7 @@ namespace TypingMVCCore.DomainModels
         public int ID { get; set; }
 
         [Required]
+        [Display(Name = "Book Title")]
         public string BookTitle { get; set; }
 
         [Required]
