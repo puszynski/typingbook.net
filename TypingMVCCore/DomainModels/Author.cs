@@ -16,6 +16,6 @@ namespace TypingMVCCore.DomainModels
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        //public ICollection<Book> Books { get; set; }
+        public List<BookAuthor> BookAuthors { get; set; }
     }
 }

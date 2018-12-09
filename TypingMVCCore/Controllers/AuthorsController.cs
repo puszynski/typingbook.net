@@ -20,9 +20,14 @@ namespace TypingMVCCore.Controllers
         }
 
         // GET: Authors
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Author.ToListAsync());
+            var authors = _context.Author.Select(x => x);
+
+            if (!String.IsNullOrEmpty(searchString))
+                authors = authors.Where(x => x.FirstName.Contains(searchString) || x.LastName.Contains(searchString));
+
+            return View(await authors.ToListAsync());
         }
 
         // GET: Authors/Details/5

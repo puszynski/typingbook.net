@@ -12,5 +12,16 @@ namespace TypingMVCCore.Data
         }
         public DbSet<Book> Book { get; set; }
         public DbSet<Author> Author { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // mapping two one-to-many into Book-Author many-to-many relation
+            modelBuilder.Entity<BookAuthor>().HasKey(t => new { t.BookID, t.AuthorID });
+            modelBuilder.Entity<BookAuthor>().HasOne(pt => pt.Book).WithMany(p => p.BookAuthors).HasForeignKey(pt => pt.BookID);
+            modelBuilder.Entity<BookAuthor>().HasOne(pt => pt.Author).WithMany(t => t.BookAuthors).HasForeignKey(pt => pt.AuthorID);
+        }
     }
 }

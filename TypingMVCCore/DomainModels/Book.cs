@@ -17,16 +17,15 @@ namespace TypingMVCCore.DomainModels
         [Required]
         public string BookContent { get; set; }
 
-        //public virtual ICollection<Author> Authors { get; set; }
-
-        //public virtual ICollection<Genre> GenresEnum { get; set; }
-
         [Range(1, 10)]
         public int? Rate { get; set; }
+        
+        public virtual List<BookAuthor> BookAuthors { get; set; }
+        //public ICollection<BookGenre> BookGenre { get; set; }
     }
-
-
-    public enum Genre
+    
+    
+    public enum BookGenre
     {
         NoGenre = 0,
         SciFi = 1,

@@ -10,6 +10,15 @@
     <a asp-action="Create">Create New</a>
     <a asp-controller="Authors" asp-action="Index">Authors</a>
 </p>
+
+<form asp-controller="Books" asp-action="Index">
+    <p>
+        Title: <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+
 <table class="table">
     <thead>
         <tr>

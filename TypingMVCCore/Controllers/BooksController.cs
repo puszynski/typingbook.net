@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,9 +18,19 @@ namespace TypingMVCCore.Controllers
         }
 
         // GET: Books
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string movieGenre, string searchString)
         {
-            return View(await _context.Book.ToListAsync());
+            //var bookGenreQuery = _context.Book.Where(x => x.BookGenre);
+
+            var books = _context.Book.Select(x => x);
+
+            //Use many to many relation https://stackoverflow.com/questions/46184678/fluent-api-many-to-many-in-entity-framework-core-2-0
+            //var authors = _context.Book.Where(x => x.ID == 1).SelectMany(x => x.BookAuthors).Select(x => x.Author);
+
+            if (!String.IsNullOrEmpty(searchString))
+                books = books.Where(x => x.BookTitle.Contains(searchString));
+
+            return View(await books.ToListAsync());
         }
 
         // GET: Books/Details/5
