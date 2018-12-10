@@ -21,11 +21,7 @@ namespace TypingMVCCore.Controllers
         public async Task<IActionResult> Index(string movieGenre, string searchString)
         {
             //var bookGenreQuery = _context.Book.Where(x => x.BookGenre);
-
             var books = _context.Book.Select(x => x);
-
-            //Use many to many relation https://stackoverflow.com/questions/46184678/fluent-api-many-to-many-in-entity-framework-core-2-0
-            //var authors = _context.Book.Where(x => x.ID == 1).SelectMany(x => x.BookAuthors).Select(x => x.Author);
 
             if (!String.IsNullOrEmpty(searchString))
                 books = books.Where(x => x.BookTitle.Contains(searchString));
@@ -62,7 +58,7 @@ namespace TypingMVCCore.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,BookTitle,BookContent,Rate")] Book book)
+        public async Task<IActionResult> Create([Bind("ID,BookTitle,BookContent,Rate,BookGenre")] Book book)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +90,7 @@ namespace TypingMVCCore.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,BookTitle,BookContent,Rate")] Book book)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,BookTitle,BookContent,Rate,BookGenre")] Book book)
         {
             if (id != book.ID)
             {

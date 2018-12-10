@@ -22,6 +22,9 @@ namespace TypingMVCCore.Data
             modelBuilder.Entity<BookAuthor>().HasKey(t => new { t.BookID, t.AuthorID });
             modelBuilder.Entity<BookAuthor>().HasOne(pt => pt.Book).WithMany(p => p.BookAuthors).HasForeignKey(pt => pt.BookID);
             modelBuilder.Entity<BookAuthor>().HasOne(pt => pt.Author).WithMany(t => t.BookAuthors).HasForeignKey(pt => pt.AuthorID);
+
+            // convert enum into string
+            modelBuilder.Entity<Book>().Property(e => e.BookGenre).HasConversion<string>();
         }
     }
 }
