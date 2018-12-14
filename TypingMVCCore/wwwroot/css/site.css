@@ -2,7 +2,6 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 body {
-    padding-top: 50px;
     padding-bottom: 20px;
     background-color: dimgray;
 }
@@ -24,7 +23,6 @@ a {
 .menu {
     text-align: right;
 }
-
 
 .blink_text {
     animation: 1s blinker linear infinite;
@@ -69,19 +67,5 @@ a {
 
     100% {
         opacity: 1.0;
-    }
-}
-
-/* apply when window width is less then.. */
-@media only screen and (max-width: 500px) {
-    .menu {
-        display: none;
-    }
-}
-
-/* apply when browser screen is bigger than.. */
-@media only screen and (min-width: 500px) {
-    .typingarea {
-        padding-top: 50px;
     }
 }

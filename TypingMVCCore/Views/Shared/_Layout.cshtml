@@ -28,17 +28,22 @@
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
         <script src="~/js/site.js" asp-append-version="true"></script>
+
+        <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js" asp-append-version="true"></script>
+        @*<script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>*@
     </environment>
+
     <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.min.css" />
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
+
 </head>
 <body>
 
-    @*Progress bar*@
     <div class="progress bg-dark" style="height:1px">
         <div class="progress-bar bg-light progress-bar-correct" style="width:0%">
         </div>
@@ -46,29 +51,19 @@
         </div>
     </div>
 
-    @*Menu*@
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">TypingMVCCore</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Books" asp-action="Index">Add Book</a></li>
-                </ul>
+    <div class="menu">
+        @Html.ActionLink("typingBook.net", "Index", "Home", new { area = "" }, new { @class = "btn btn-outline-dark border-top-0 rounded-0" })
+        @Html.ActionLink("change book", "Index", "Books", new { area = "" }, new { @class = "btn btn-outline-dark border-top-0 rounded-0" })
+        <button a href="#" type="button" class="btn btn-outline-dark border-top-0 rounded-0">settings</button>
+        <button a href="#" type="button" class="btn btn-outline-dark border-top-0 rounded-0">tips</button>
+        <button a href="#" type="button" class="btn btn-outline-light border-top-0 rounded-0" data-toggle="collapse" data-target="#logindiv">LogIN</button>
+
+        <div id="logindiv" class="collapse container">
+            <form action="/action_page.php">
                 <partial name="_LoginPartial" />
-            </div>
+            </form>
         </div>
-    </nav>
-
-
+    </div>
 
     <partial name="_CookieConsentPartial" />
 
@@ -80,8 +75,16 @@
         </footer>
     </div>
 
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </environment>
 
-
+    <environment exclude="Development">
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    </environment>
+              
     @RenderSection("Scripts", required: false)
 </body>
 </html>
