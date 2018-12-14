@@ -4,6 +4,7 @@
 // Write your JavaScript code.
 
 function mainPageMenuShortcuts(spaceLink, shiftLink, escLink) {
+
     document.onkeydown = function (event) {
         //ToDo - ukryty tekst dla niewidomych który mówi aby nacisnąć 'B' aby przejść do trybu dla niewidomych + event
         if (event.keyCode === 32) {
@@ -24,7 +25,7 @@ function typingBook(currentBookPage, bookPagesJson, isIntroduction) {
         e = e || window.event;
 
         var book_content = document.getElementById('book_content').textContent;
-        var pageLength = bookPagesJson[currentBookPage].length;
+        pageLength = bookPagesJson[currentBookPage].length;
 
         //typing
         if (String.fromCharCode(e.which /*|| e.keyCode*/) === book_content.charAt(0)) {

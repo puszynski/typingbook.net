@@ -15,6 +15,11 @@ namespace TypingMVCCore.Controllers
             return View();
         }
 
+        public IActionResult ModalTest()
+        {
+            return View();
+        }
+
         
         public IActionResult Privacy()
         {
