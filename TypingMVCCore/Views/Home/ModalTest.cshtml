@@ -1,10 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>typingBook.net</title>
-
+    <meta name="viewport" content="width=device-width" />
+    <title>ModalTest</title>
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
@@ -37,51 +38,24 @@
     </environment>
 </head>
 <body>
+    <!-- Button trigger modal -->
+    <button data-toggle="modal" data-target="#exampleModal">
+        Launch demo modal
+    </button>
 
-    @*Progress bar*@
-    <div class="progress bg-dark" style="height:1px">
-        <div class="progress-bar bg-light progress-bar-correct" style="width:0%">
-        </div>
-        <div class="progress-bar bg-danger progress-bar-wrong" style="width:0%">
-        </div>
-    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
 
-    @*Menu*@
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">TypingMVCCore</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Books" asp-action="Index">Add Book</a></li>
-                </ul>
-                <partial name="_LoginPartial" />
+                    <h1>TESTOWA TREŚĆ MODALA</h1>
+                    <button data-dismiss="modal">Close</button>
+                    <button data->Save changes</button>
+
+                </div>
             </div>
         </div>
-    </nav>
-
-
-
-    <partial name="_CookieConsentPartial" />
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2018 - @DateTime.Now.Year, Typing Book.net</p>
-        </footer>
     </div>
-
-
-
-    @RenderSection("Scripts", required: false)
 </body>
 </html>
