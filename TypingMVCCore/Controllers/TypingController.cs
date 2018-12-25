@@ -11,14 +11,17 @@ namespace TypingMVCCore.Controllers
 {
     public class TypingController : Controller
     {
+        private const int _defaultBook = 3; 
         private readonly ApplicationDbContext _context;
-
+        
         public TypingController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public IActionResult Index(int bookID = 1, int bookPage = 0)
+        // Typing/Index?bookid=3&bookPage=2 
+        // Typing?bookid=3&bookPage=2
+        public IActionResult Index(int bookID = _defaultBook, int bookPage = 0)
         {
             var book = _context.Book.Find(bookID);
 

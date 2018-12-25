@@ -32,10 +32,21 @@ namespace TypingMVCCore.Helpers
                 if (IsLastPart(rest, true))
                 {
                     secondPart = rest.Substring(0, rest.IndexOf(". ") + 1);
+
+                    // todo
+                    if (secondPart.Length >= 200)
+                    {
+                        secondPart = rest.Substring(0, rest.IndexOf(" ") + 1); // narazie - awaryjnie gdy brak ". " rozdziela po spacji
+                    }
                 }
 
                 if (!IsEnd)
-                    rest = rest.Replace(secondPart, "").RemoveSpacesFromBeginning();
+                {
+                    if (secondPart == "")
+                        rest = "";
+                    else
+                        rest = rest.Replace(secondPart, "").RemoveSpacesFromBeginning();
+                }
 
                 bookPages.Add(firstPart + secondPart);
                 firstPart = "";
