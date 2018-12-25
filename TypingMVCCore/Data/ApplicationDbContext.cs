@@ -14,6 +14,11 @@ namespace TypingMVCCore.Data
         public DbSet<Author> Author { get; set; }
 
 
+        public DbSet<Note> Note { get; set; }
+        // ???
+        //public DbSet<User> User { get; set; } 
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
