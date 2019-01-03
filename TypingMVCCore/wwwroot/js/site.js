@@ -53,7 +53,8 @@ function typingBook(currentBookPage, bookPagesJson, isIntroduction) {
                         window.location.href = '?bookID=2&bookPage=0';
                     }
                     else {
-                        window.location.href = '@Url.Action("ChoseBook", "Home")';
+                        //window.location.href = '@Url.Action("Index", "Books")';
+                        redirectToAction();
                     }
                 }
                 else {
@@ -83,3 +84,53 @@ function updateBookPageStatusBar(pageLength) {
     $('.progress-bar-correct').css({ 'width': correctPercent + '%' });
     $('.progress-bar-wrong').css({ 'width': wrongPercent + '%' });
 }
+
+
+function redirectToAction() {
+    var url = '/Books/Index/';
+    $.ajax({
+        url: url,
+        data: {
+            //parameters go here in object literal form
+            param1: xyz,
+            param2: 123
+        }, 
+        type: 'GET',
+        datatype: 'json',
+        success: function (data) {
+            //tu chyba musi być przekierowanir
+            alert('got here with data');
+            window.location.href = data.redirecturl;
+
+        },
+        error: function () { alert('something bad happened'); }
+    });
+}
+
+
+// inny przkład:
+//function fungo() {
+//    var date = new Date(); // Javascript date object 
+//    var link = '@Url.Action("ActionMethod", "Home")';  // url should be enclosed by single quotes.
+//    var args = {
+//        param1: date.toISOString(),  // make sure that the date is in Javascript date object and converted to ISO string for proper casting in c#
+//        param2: date.toISOString(),
+//        param3: 'somevalue'
+//    };
+
+//    $.ajax({
+//        type: "GET",
+//        url: link, // url of your action
+//        data: args, // parameters if available 
+//        dataType: "json",
+//        success: function (data) {
+
+//            window.location.href = data.redirecturl; // your action should return an object having [redirecturl] property
+
+//        },
+//        error: function (httpRequest, textStatus, errorThrown) {  // detailed error messsage 
+//            alert("Error: " + textStatus + " " + errorThrown + " " + httpRequest);
+//        }
+//    });
+
+//}
