@@ -124,4 +124,3 @@ namespace TypingMVCCore.Controllers
         }
     }
 }
-}
