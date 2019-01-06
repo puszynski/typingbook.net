@@ -24,32 +24,25 @@ namespace TypingMVCCore.Controllers
         public IActionResult Index(int bookID = _defaultBook, int bookPage = 0)
         {
             var book = _context.Book.Find(bookID);
-
-            var authorsList = _context.Book.Where(x => x.ID == 1)
-                .SelectMany(x => x.BookAuthors)
-                .Select(x => x.Author)
-                .ToList();
-
-            var authors = "";
-            if (authorsList != null)            
-            {
-                foreach (var item in authorsList)
-                {
-                    authors = item.FirstName + " " + item.LastName + ", ";
-                }
-            }
-              
-
-            var typingHelper = new TypingHelper();
-
+            
             if (bookID == 1)
                 ViewBag.IsIntroduction = true;
 
+            var typingHelper = new TypingHelper();
+            var bookPages = typingHelper.DivideBook(book.BookContent);
+
+            var authorNamesHelper = new GetAuthorsFullNameListHelper(_context);
+            var authorsList = _context.Book.Where(x => x.ID == bookID)
+                .SelectMany(x => x.BookAuthors)
+                .Select(x => x.Author)
+                .ToList();
+            var bookAuthors = authorNamesHelper.Get(bookID);
+
             var model = new TypingViewModel()
             {
-                BookAuthors = authors,
+                BookAuthors = bookAuthors,
                 CurrentBookPage = bookPage,
-                BookPages = typingHelper.DivideBook(book.BookContent),
+                BookPages = bookPages,
                 BookTitle = book.BookTitle,
                 BookID = bookID
             };
