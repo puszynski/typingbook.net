@@ -18,5 +18,19 @@ namespace TypingMVCCore.Controllers
             var model = new List<int> { 31, 23, 51, 54, 12 };
             return PartialView("_StatisticContainer", model);
         }
+
+        public IActionResult SaveBookPageProgress(string input)
+        {
+            var fooo = input;
+            // TODO save user progress in DB
+            return Ok();
+        }
+
+        public IActionResult SaveStatisticProgress(int correctTyped, int wrongTyped)
+        {
+            // TODO save user stats in DB
+            var model = new List<int> { correctTyped, wrongTyped };
+            return PartialView("_StatisticContainer", model); ;
+        }
     }
 }

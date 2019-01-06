@@ -38,10 +38,14 @@ function typingBook(currentBookPage, bookPagesJson, isIntroduction) {
             document.getElementById('typed_content').innerHTML += book_content.charAt(0);
             document.getElementById('book_content').innerHTML = book_content.substr(1);
 
-            //when book pages end
+            
             if (document.getElementById('book_content').innerHTML === '') {
+                //when book pages end
                 var bookPages = bookPagesJson;
                 var nextPage = ++currentBookPage;
+
+                saveBookPageProgress();
+                saveStatisticsProgress();
 
                 $('.progress-bar-correct').css({ 'width': '0%' });
                 $('.progress-bar-wrong').css({ 'width': '0%' });
@@ -53,8 +57,8 @@ function typingBook(currentBookPage, bookPagesJson, isIntroduction) {
                         window.location.href = '?bookID=2&bookPage=0';
                     }
                     else {
-                        //window.location.href = '@Url.Action("Index", "Books")';
-                        redirectToAction();
+                        window.location.href = '@Url.Action("Index", "Books")';
+                        //redirectToAction();
                     }
                 }
                 else {
@@ -85,7 +89,46 @@ function updateBookPageStatusBar(pageLength) {
     $('.progress-bar-wrong').css({ 'width': wrongPercent + '%' });
 }
 
+function saveBookPageProgress() {
+    var url = '/Statistics/SaveBookPageProgress';
 
+    $.ajax({
+        url: url,
+        data: { // TODO
+            input: "razdwatrzy"
+        },
+        type: 'GET',
+        datatype: 'json'
+    });
+}
+
+
+function saveStatisticsProgress() {
+    var url = '/Statistics/SaveStatisticProgress';
+    
+    var correctTyped = parseInt($(".correctTyped").text(), 10);
+    var wrongTyped = parseInt($(".wrongTyped").text(), 10);
+
+    $.ajax({
+        url: url,
+        data: { // TODO
+            correctTyped: correctTyped,
+            wrongTyped: wrongTyped
+        },
+        type: 'GET',
+        datatype: 'json',
+        //success: function () {
+        //    alert("Data has been added successfully.");  
+        //    LoadData();
+        //},
+        //error: function () {
+        //    alert("Error while inserting data");
+        //}
+    });
+}
+
+
+// TODO
 function redirectToAction() {
     var url = '/Books/Index/';
     $.ajax({
