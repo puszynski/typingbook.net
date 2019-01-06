@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using TypingMVCCore.Data;
 
 namespace TypingMVCCore.Helpers
@@ -13,11 +12,11 @@ namespace TypingMVCCore.Helpers
             _context = context;
         }
 
-        public string GetNames()
+        public string Get(int bookID)
         {
             var result = "";
 
-            var authorsList = _context.Book.Where(x => x.ID == 1)
+            var authorsList = _context.Book.Where(x => x.ID == bookID)
                 .SelectMany(x => x.BookAuthors)
                 .Select(x => x.Author)
                 .ToList();
@@ -27,7 +26,7 @@ namespace TypingMVCCore.Helpers
                 foreach (var item in authorsList)
                 {
                     if (authorsList.IndexOf(item) == authorsList.Count - 1) 
-                        result += item.FirstName + " " + item.LastName; // this is the last item
+                        result += item.FirstName + " " + item.LastName; // the last item
                     else
                         result += item.FirstName + " " + item.LastName + ", ";
                 }

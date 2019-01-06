@@ -32,7 +32,11 @@ namespace TypingMVCCore.Controllers
             var bookPages = typingHelper.DivideBook(book.BookContent);
 
             var authorNamesHelper = new GetAuthorsFullNameListHelper(_context);
-            var bookAuthors = authorNamesHelper.GetNames();
+            var authorsList = _context.Book.Where(x => x.ID == bookID)
+                .SelectMany(x => x.BookAuthors)
+                .Select(x => x.Author)
+                .ToList();
+            var bookAuthors = authorNamesHelper.Get(bookID);
 
             var model = new TypingViewModel()
             {
