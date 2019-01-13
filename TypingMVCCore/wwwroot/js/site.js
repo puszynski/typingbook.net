@@ -20,25 +20,12 @@ function startTypingAjaxMenuButton() {
     });
 }
 
-
-//function startTypingAjaxMenuButton() {
-//        //alert("check");
-//    $("#show_button").click(function () {
-//        //alert("check");
-//        //myNumber = "123";
-//        $.ajax({
-//            type:"get",
-//            url: "/Typing",
-//            //data: {number:myNumber}
-//            //cache: false,
-//            //async: true,
-//            success: function (data) {
-//                $(".body-content").val(data); // https://www.youtube.com/watch?v=RXS-PU0uFRI
-//            }
-//        });
-//    });
-//}  
-
+// Powinno pokazywać img ładowania w trakcie ładowania zawartości ajaxem
+//$('#loading-image').bind('ajaxStart', function () {
+//    $(this).show();
+//}).bind('ajaxStop', function () {
+//    $(this).hide();
+//});
 
 function mainPageMenuShortcuts(spaceLink, shiftLink, escLink) {
 
@@ -162,28 +149,5 @@ function saveStatisticsProgress() {
         //error: function () {
         //    alert("Error while inserting data");
         //}
-    });
-}
-
-
-// TODO
-function redirectToAction() {
-    var url = '/Books/Index/';
-    $.ajax({
-        url: url,
-        data: {
-            //parameters go here in object literal form
-            param1: xyz,
-            param2: 123
-        }, 
-        type: 'GET',
-        datatype: 'json',
-        success: function (data) {
-            //tu chyba musi być przekierowanir
-            alert('got here with data');
-            window.location.href = data.redirecturl;
-
-        },
-        error: function () { alert('something bad happened'); }
     });
 }

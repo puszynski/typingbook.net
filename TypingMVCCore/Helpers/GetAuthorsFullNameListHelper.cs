@@ -1,25 +1,13 @@
-﻿using System.Linq;
-using TypingMVCCore.Data;
+﻿using System.Collections.Generic;
+using TypingMVCCore.DomainModels;
 
 namespace TypingMVCCore.Helpers
 {
     public class GetAuthorsFullNameListHelper
     {
-        private readonly ApplicationDbContext _context;
-
-        public GetAuthorsFullNameListHelper(ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
-        public string Get(int bookID)
+        public string Get(List<Author> authorsList)
         {
             var result = "";
-
-            var authorsList = _context.Book.Where(x => x.ID == bookID)
-                .SelectMany(x => x.BookAuthors)
-                .Select(x => x.Author)
-                .ToList();
             
             if (authorsList != null)
             {

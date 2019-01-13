@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TypingMVCCore.Data;
 using TypingMVCCore.DomainModels;
+using TypingMVCCore.Repository;
 using TypingMVCCore.ViewModels;
 
 namespace TypingMVCCore.Controllers
@@ -12,18 +13,19 @@ namespace TypingMVCCore.Controllers
     public class BooksController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IBooksRepository _booksRepository;
 
-        public BooksController(ApplicationDbContext context)
+        public BooksController(ApplicationDbContext context, IBooksRepository booksRepository)
         {
             _context = context;
+            _booksRepository = booksRepository;
         }
 
         // GET: Books
-        public async Task<IActionResult> Index(string movieGenre, string searchString)
+        public async Task<IActionResult> Index(string searchString)
         {
-            //var bookGenreQuery = _context.Book.Where(x => x.BookGenre);
-            var books = _context.Book.Select(x => x);
-            var authors = _context.
+            var books = _booksRepository.GetAllBooks();
+            var authors = _booksRepository.GetAllAuthors();
 
             var model = new BookViewModel();
 

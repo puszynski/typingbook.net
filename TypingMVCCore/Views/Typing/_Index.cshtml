@@ -12,10 +12,10 @@
 </h6>
 
 
-    <partial name="_StatisticsContainer"/>
+<partial name="_StatisticsContainer" model="new List<int> { 99, 33, 66 }"/>
   
 
 
-    <script type="text/javascript">
+<script type="text/javascript">
     typingBook(@Model.CurrentBookPage, @bookPages, @isIntroduction);
-    </script>
+</script>

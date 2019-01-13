@@ -2,14 +2,16 @@
 
 <div class="statistic">
     <div class="statistics-area alert alert-secondary">
+        
         <div class="inner-statistics">
             <h2>Statystyki</h2>
             <p class="stats">Correct typed: <span class="correctTyped">0</span>, wrong typed: <span class="wrongTyped">0</span></p>
         </div>
-    </div>
 
-    @foreach (var item in Model)
-    {
-        <p>@item</p>
-    }
+        @foreach (var item in Model)
+        {
+            <p>@item</p>
+        }
+
+    </div>
 </div>

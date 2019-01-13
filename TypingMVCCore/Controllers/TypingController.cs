@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using TypingMVCCore.Data;
 using TypingMVCCore.Helpers;
+using TypingMVCCore.Repository;
 using TypingMVCCore.ViewModels;
 
 namespace TypingMVCCore.Controllers
@@ -9,31 +9,28 @@ namespace TypingMVCCore.Controllers
     public class TypingController : Controller
     {
         private const int _defaultBook = 2; 
-        private readonly ApplicationDbContext _context;
-        
-        public TypingController(ApplicationDbContext context)
+        private readonly IBooksRepository _booksRepository;
+
+        public TypingController(IBooksRepository booksRepository)
         {
-            _context = context;
+            _booksRepository = booksRepository;
         }
 
-        // Typing/Index?bookid=3&bookPage=2 
-        // Typing?bookid=3&bookPage=2
+
         public IActionResult Index(int bookID = _defaultBook, int bookPage = 0)
         {
-            var book = _context.Book.Find(bookID);
+            var book = _booksRepository.GetBookByID(bookID);
             
             if (bookID == 1)
                 ViewBag.IsIntroduction = true;
-
+            
             var typingHelper = new TypingHelper();
             var bookPages = typingHelper.DivideBook(book.BookContent);
 
-            var authorNamesHelper = new GetAuthorsFullNameListHelper(_context);
-            var authorsList = _context.Book.Where(x => x.ID == bookID)
-                .SelectMany(x => x.BookAuthors)
-                .Select(x => x.Author)
-                .ToList();
-            var bookAuthors = authorNamesHelper.Get(bookID);
+            var authorsList = _booksRepository.GetAuthorsByBookID(bookID);
+
+            var authorNamesHelper = new GetAuthorsFullNameListHelper();
+            var bookAuthors = authorNamesHelper.Get(authorsList.ToList());
 
             var model = new TypingViewModel()
             {

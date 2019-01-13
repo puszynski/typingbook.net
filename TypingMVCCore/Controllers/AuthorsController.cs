@@ -1,28 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TypingMVCCore.Data;
 using TypingMVCCore.DomainModels;
+using TypingMVCCore.Repository;
 
 namespace TypingMVCCore.Controllers
 {
     public class AuthorsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly BooksRepository _booksRepository;
 
         public AuthorsController(ApplicationDbContext context)
         {
             _context = context;
+            _booksRepository = new BooksRepository(context);
         }
 
         // GET: Authors
         public async Task<IActionResult> Index(string searchString)
         {
-            var authors = _context.Author.Select(x => x);
+            var authors = _booksRepository.GetAllAuthors();
 
             if (!String.IsNullOrEmpty(searchString))
                 authors = authors.Where(x => x.FirstName.Contains(searchString) || x.LastName.Contains(searchString));
