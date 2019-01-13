@@ -8,7 +8,7 @@ using TypingMVCCore.Models;
 
 namespace TypingMVCCore.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : Controller // TODO baseController a w nim bool isAjaxCall = Request.Headers["x-requested-with"] == "XMLHttpRequest";
     {
         public IActionResult Index()
         {

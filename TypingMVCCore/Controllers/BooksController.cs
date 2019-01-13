@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TypingMVCCore.Data;
 using TypingMVCCore.DomainModels;
+using TypingMVCCore.ViewModels;
 
 namespace TypingMVCCore.Controllers
 {
@@ -22,11 +23,18 @@ namespace TypingMVCCore.Controllers
         {
             //var bookGenreQuery = _context.Book.Where(x => x.BookGenre);
             var books = _context.Book.Select(x => x);
+            var authors = _context.
+
+            var model = new BookViewModel();
 
             if (!String.IsNullOrEmpty(searchString))
                 books = books.Where(x => x.BookTitle.Contains(searchString));
 
-            return View(await books.ToListAsync());
+            bool isAjaxCall = Request.Headers["x-requested-with"] == "XMLHttpRequest";
+            if (isAjaxCall)
+                return PartialView("_Index", await books.ToListAsync());
+            else
+                return View(await books.ToListAsync());
         }
 
         // GET: Books/Details/5

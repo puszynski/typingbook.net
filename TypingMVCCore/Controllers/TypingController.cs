@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using TypingMVCCore.Data;
 using TypingMVCCore.Helpers;
@@ -11,7 +8,7 @@ namespace TypingMVCCore.Controllers
 {
     public class TypingController : Controller
     {
-        private const int _defaultBook = 3; 
+        private const int _defaultBook = 2; 
         private readonly ApplicationDbContext _context;
         
         public TypingController(ApplicationDbContext context)
@@ -46,7 +43,13 @@ namespace TypingMVCCore.Controllers
                 BookTitle = book.BookTitle,
                 BookID = bookID
             };
-            return View(model);
+
+
+            bool isAjaxCall = Request.Headers["x-requested-with"] == "XMLHttpRequest";
+            if (isAjaxCall)
+                return PartialView("_Index", model); 
+            else              
+                return View(model);
         }
     }
 }

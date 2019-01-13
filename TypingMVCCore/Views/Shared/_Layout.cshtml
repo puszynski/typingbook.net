@@ -40,7 +40,6 @@
         <link rel="stylesheet" href="~/css/site.min.css" />
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-
 </head>
 <body>
 
@@ -52,12 +51,10 @@
     </div>
 
     <div class="menu">
-        @Html.ActionLink("typingBook.net", "Index", "Home", new { area = "" }, new { @class = "btn btn-outline-dark border-top-0 rounded-0" })
-        @Html.ActionLink("change book", "Index", "Books", new { area = "" }, new { @class = "btn btn-outline-dark border-top-0 rounded-0" })
-        <button a href="#" type="button" class="btn btn-outline-dark border-top-0 rounded-0">settings</button>
-        <button a href="#" type="button" class="btn btn-outline-dark border-top-0 rounded-0">tips</button>
+        <input type="button" value="Type!" id="type_button" class="btn btn-outline-dark border-top-0 rounded-0" />
+        <input type="button" value="switchBook" id="switchBook_button" class="btn btn-outline-dark border-top-0 rounded-0" />
+       
         <button a href="#" type="button" class="btn btn-outline-light border-top-0 rounded-0" data-toggle="collapse" data-target="#logindiv">LogIN</button>
-
         <div id="logindiv" class="collapse container">
             <form action="/action_page.php">
                 <partial name="_LoginPartial" />
@@ -84,7 +81,11 @@
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     </environment>
-              
+
+    <script>
+        startTypingAjaxMenuButton();
+    </script>
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>

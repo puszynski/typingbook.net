@@ -1,20 +1,58 @@
 ﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
-// Write your JavaScript code.
+
+
+// Dynamic menu using ajax
+function startTypingAjaxMenuButton() {
+        //alert("check");
+    $("#type_button").click(function () {
+        //alert("check");
+        $(".body-content").load(
+            "/Typing/Index"//, { model data goes here..}
+        );
+    });
+
+    $("#switchBook_button").click(function () {
+        $(".body-content").load(
+            "/Books/Index"
+        );
+    });
+}
+
+
+//function startTypingAjaxMenuButton() {
+//        //alert("check");
+//    $("#show_button").click(function () {
+//        //alert("check");
+//        //myNumber = "123";
+//        $.ajax({
+//            type:"get",
+//            url: "/Typing",
+//            //data: {number:myNumber}
+//            //cache: false,
+//            //async: true,
+//            success: function (data) {
+//                $(".body-content").val(data); // https://www.youtube.com/watch?v=RXS-PU0uFRI
+//            }
+//        });
+//    });
+//}  
+
 
 function mainPageMenuShortcuts(spaceLink, shiftLink, escLink) {
 
     document.onkeydown = function (event) {
-        //ToDo - ukryty tekst dla niewidomych który mówi aby nacisnąć 'B' aby przejść do trybu dla niewidomych + event
+        //ToDo - ukryty tekst dla niewidomych który mówi aby nacisnąć 'B' aby przejść do trybu dla niewidomych + event (informacje trzeba ukryć na początku kodu HTML aby syntezator go odczytał)
+
         if (event.keyCode === 32) {
             window.location.href = spaceLink;
         }
         if (event.keyCode === 16) {
-            window.location.href = shiftLink; // name?
+            window.location.href = shiftLink;
         }
         if (event.keyCode === 27) {
-            window.location.href = escLink; // ?
+            window.location.href = escLink;
         }
     };
 }
@@ -149,31 +187,3 @@ function redirectToAction() {
         error: function () { alert('something bad happened'); }
     });
 }
-
-
-// inny przkład:
-//function fungo() {
-//    var date = new Date(); // Javascript date object 
-//    var link = '@Url.Action("ActionMethod", "Home")';  // url should be enclosed by single quotes.
-//    var args = {
-//        param1: date.toISOString(),  // make sure that the date is in Javascript date object and converted to ISO string for proper casting in c#
-//        param2: date.toISOString(),
-//        param3: 'somevalue'
-//    };
-
-//    $.ajax({
-//        type: "GET",
-//        url: link, // url of your action
-//        data: args, // parameters if available 
-//        dataType: "json",
-//        success: function (data) {
-
-//            window.location.href = data.redirecturl; // your action should return an object having [redirecturl] property
-
-//        },
-//        error: function (httpRequest, textStatus, errorThrown) {  // detailed error messsage 
-//            alert("Error: " + textStatus + " " + errorThrown + " " + httpRequest);
-//        }
-//    });
-
-//}
