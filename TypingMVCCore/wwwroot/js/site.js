@@ -1,9 +1,4 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-
-
-// Dynamic menu using ajax
+﻿// Dynamic menu using ajax
 function startTypingAjaxMenuButton() {
         //alert("check");
     $("#type_button").click(function () {
@@ -125,13 +120,13 @@ function saveStatisticsProgress() {
             wrongTyped: wrongTyped
         },
         type: 'GET',
-        datatype: 'json',
-        //success: function () {
-        //    alert("Data has been added successfully.");  
-        //    LoadData();
-        //},
-        //error: function () {
-        //    alert("Error while inserting data");
-        //}
+        datatype: 'json'
+            //success: function () {
+            //    alert("Data has been added successfully.");  
+            //    LoadData();
+            //},
+            //error: function () {
+            //    alert("Error while inserting data");
+            //}
     });
 }
