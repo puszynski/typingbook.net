@@ -27,22 +27,6 @@ function startTypingAjaxMenuButton() {
 //    $(this).hide();
 //});
 
-function mainPageMenuShortcuts(spaceLink, shiftLink, escLink) {
-
-    document.onkeydown = function (event) {
-        //ToDo - ukryty tekst dla niewidomych który mówi aby nacisnąć 'B' aby przejść do trybu dla niewidomych + event (informacje trzeba ukryć na początku kodu HTML aby syntezator go odczytał)
-
-        if (event.keyCode === 32) {
-            window.location.href = spaceLink;
-        }
-        if (event.keyCode === 16) {
-            window.location.href = shiftLink;
-        }
-        if (event.keyCode === 27) {
-            window.location.href = escLink;
-        }
-    };
-}
 
 
 function typingBook(currentBookPage, bookPagesJson, isIntroduction) {
